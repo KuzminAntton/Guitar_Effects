@@ -3,25 +3,17 @@ package effects.impl;
 import effects.Effect;
 
 public class Echo extends Effect {
-    private double a;
-    private double b;
-    private double c;
-    private long sampleFreq;
-
-    public Echo(long sf) {
-        a = 1;
-        b = 0.7;
-        c = 0.5;
-        sampleFreq = sf;
-    }
+    private final double A = 1;
+    private final double B = 0.7;
+    private final double C = 0.5;
 
     public Double effect(int i, Double[] sig, int bufLen) {
         int mask = bufLen - 1;
-        double norm = 1.0 / (a + b + c);
+        double norm = 1.0 / (A + B + C);
         int N = (int) (0.3 * sampleFreq);
 
-        return (norm * (	a *	sig[i] +
-                b * sig[(i + bufLen - N) & mask] +
-                c  * sig[(i + bufLen - 2 * N) & mask]));
+        return (norm * (A *	sig[i] +
+                B * sig[(i + bufLen - N) & mask] +
+                C  * sig[(i + bufLen - 2 * N) & mask]));
     }
 }

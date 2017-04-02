@@ -1,5 +1,7 @@
 package wav_file;
 
+import effects.Effect;
+import effects.factory.EffectsFactory;
 import effects.impl.Reverb;
 
 import java.io.*;
@@ -17,17 +19,17 @@ public class ReadWriteExample{
             double[][] buffer = new double[2][buffLen * numChannels];
             long sampleRate = wavFile.getSampleRate();
             long numFrames = wavFile.getFramesRemaining();
-            WavFile wavNewFile = WavFile.newWavFile(new File("/home/anton/Anton/Diplom/wavOut"), numChannels, numFrames, validBytes, sampleRate);
+
+            WavFile wavNewFile = WavFile.newWavFile(new File("/home/anton/Anton/Diplom/WavOut/WAV_OUT"), numChannels, numFrames, validBytes, sampleRate);
+
             Double [] channel1 = new Double [buffLen];
             Double [] channel2 = new Double [buffLen];
+
             //long framesCounter = 0;
             int framesRead;
-            //Tremolo echo = new Tremolo(sampleRate);
-            //Distortion echo = new Distortion(sampleRate);
-            Reverb echo = new Reverb(sampleRate);
-            //Echo echo = new Echo(sampleRate);
-            //NaturalEcho echo = new NaturalEcho(sampleRate);
-            //Flanger echo = new Flanger(sampleRate);
+            //effcts
+            Effect effect = EffectsFactory.getInstance().getNaturalEcho();
+            effect.setSampleFreq(sampleRate);
             do
             {
                 // Read frames into buffer
@@ -39,8 +41,8 @@ public class ReadWriteExample{
                     channel2[i] = buffer[1][i];
                 }
 
-                Double[] newChanel1 = echo.transform(channel1);
-                Double[] newChanel2 = echo.transform(channel2);
+                Double[] newChanel1 = effect.transform(channel1);
+                Double[] newChanel2 = effect.transform(channel2);
                 double[][] transBuffer = new double[2][newChanel1.length];
 
                 for (int i=0 ; i < newChanel1.length ; i++)

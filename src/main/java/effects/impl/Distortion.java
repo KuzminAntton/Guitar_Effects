@@ -3,47 +3,17 @@ package effects.impl;
 import effects.Effect;
 
 public class Distortion extends Effect {
-    private double limit;
-    private double g;
-    private long sampleFreq;
-
-    public Distortion(long sf) {
-        limit = 0.01;
-        g = 3;
-
-        sampleFreq = sf;
-    }
+    private final double LIMIT = 0.01;
+    private final double G = 3;
 
     public Double effect(int i, Double[] sig, int bufLen) {
         int mask = bufLen - 1;
 
         double y = sig[i];
-        if(y > limit){y = limit;}
-        if(y < limit){y = -limit;}
+        if(y > LIMIT){y = LIMIT;}
+        if(y < LIMIT){y = -LIMIT;}
 
-        return g*y;
+        return G*y;
     }
 
-//    static public void main(String args[]) {
-//        System.out.println("Echo");
-//
-//        int M = 32;
-//        Double[] sig = new Double[M];
-//        for (int i = 0; i < M; i++) {
-//            sig[i] = 0.0;
-//        }
-//
-//        sig[10] = 1.0;
-//
-//        for (int i = 0; i < M; i++)
-//            System.out.print(sig[i] + " ");
-//        System.out.println();
-//
-//        int sampleFreq = 44100;
-//        Distortion eff = new Distortion(sampleFreq);
-//        Double[] trans = eff.transform(sig);
-//
-//        for (int i = 0; i < trans.length; i++)
-//            System.out.print(trans[i] + " ");
-//    }
 }

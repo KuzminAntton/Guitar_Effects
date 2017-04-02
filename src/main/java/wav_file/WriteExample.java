@@ -49,7 +49,7 @@ public class WriteExample
                     channel2[i] = buffer[1][i];
                 }
 
-                Reverb reverb = new Reverb(sampleRate);
+                Reverb reverb = new Reverb();
                 Double[] newChanel1 = reverb.transform(channel1);
                 Double[] newChanel2 = reverb.transform(channel2);
                 double[][] transBuffer = new double[2][newChanel1.length];
