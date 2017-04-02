@@ -1,6 +1,8 @@
 package effects.impl;
 
 
+import effects.Effect;
+
 public class NaturalEcho extends Effect {
     private double a;
     private double l;

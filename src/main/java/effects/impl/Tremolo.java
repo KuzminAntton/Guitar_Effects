@@ -1,6 +1,8 @@
 package effects.impl;
 
 
+import effects.Effect;
+
 public class Tremolo extends Effect {
     private double phi;
     private double omega;

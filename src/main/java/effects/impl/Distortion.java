@@ -1,5 +1,7 @@
 package effects.impl;
 
+import effects.Effect;
+
 public class Distortion extends Effect {
     private double limit;
     private double g;

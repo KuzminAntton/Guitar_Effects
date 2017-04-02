@@ -1,5 +1,7 @@
 package effects.impl;
 
+import effects.Effect;
+
 public class Flanger extends Effect {
     private double phi;
     private double omega;

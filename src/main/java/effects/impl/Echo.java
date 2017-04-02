@@ -1,5 +1,7 @@
 package effects.impl;
 
+import effects.Effect;
+
 public class Echo extends Effect {
     private double a;
     private double b;

@@ -1,6 +1,8 @@
 package effects.impl;
 
 
+import effects.Effect;
+
 public class Reverb extends Effect {
     private double a;
     private long sampleFreq;

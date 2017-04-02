@@ -1,4 +1,4 @@
-package effects.impl;
+package effects;
 
 public abstract class Effect {
 
