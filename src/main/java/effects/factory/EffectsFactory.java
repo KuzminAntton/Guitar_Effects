@@ -10,6 +10,7 @@ public class EffectsFactory {
     private final NaturalEcho naturalEcho = new NaturalEcho();
     private final Reverb reverb = new Reverb();
     private final Flanger flanger = new Flanger();
+    private final Tremolo tremolo = new Tremolo();
 
     public static EffectsFactory getInstance() {
         return instance;
@@ -33,5 +34,9 @@ public class EffectsFactory {
 
     public Flanger getFlanger() {
         return flanger;
+    }
+
+    public Tremolo getTremolo() {
+        return tremolo;
     }
 }

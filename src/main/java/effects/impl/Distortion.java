@@ -1,6 +1,7 @@
 package effects.impl;
 
 import effects.Effect;
+import project_constants.ProjectConstants;
 
 public class Distortion extends Effect {
     private final double LIMIT = 0.01;
@@ -15,5 +16,6 @@ public class Distortion extends Effect {
 
         return G*y;
     }
+
 
 }
