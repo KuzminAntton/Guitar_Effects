@@ -14,11 +14,30 @@ public class GraphsWorker {
 
     public void addToDataset(Double[] arr1) {
         final XYSeries signal = new XYSeries( "Simple Signal" );
-        int length1 = arr1.length;
+
+        int length1 = arr1.length / 2;
+
         for(int i = 0; i < length1; i++) {
             signal.add(i,arr1[i]);
         }
+
         dataset.addSeries(signal);
+    }
+
+    public void addToDataset(Double[] arr1, Double[] arr2) {
+        final XYSeries signal1 = new XYSeries( "Simple Signal" );
+        final XYSeries signal2 = new XYSeries( "Out Signal" );
+
+        for(int i = 0; i < 500; i++) {
+            signal1.add(i,arr1[i]);
+        }
+
+        for(int i = 0; i < 500; i++) {
+            signal2.add(i,arr2[i]);
+        }
+
+        dataset.addSeries(signal1);
+        dataset.addSeries(signal2);
     }
 
     public void plotSignal(String effectName) {
