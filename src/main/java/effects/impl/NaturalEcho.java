@@ -7,6 +7,8 @@ public class NaturalEcho extends Effect {
     private final double A = 0.7;
     private final double L = 0.6;
 
+    private String name = "NaturalEcho";
+
     public Double effect(int i, Double[] sig, int bufLen) {
         int mask = bufLen - 1;
 
@@ -17,5 +19,9 @@ public class NaturalEcho extends Effect {
                 L * sig[(i + bufLen - 1) & mask] +
                 L * sig[(i + bufLen - 1) & mask]+
                 A *(1- L) * sig[(i + bufLen - N) & mask]));
+    }
+
+    public String getName() {
+        return name;
     }
 }

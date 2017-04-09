@@ -7,6 +7,8 @@ public class Echo extends Effect {
     private final double B = 0.7;
     private final double C = 0.5;
 
+    private String name = "Echo";
+
     public Double effect(int i, Double[] sig, int bufLen) {
         int mask = bufLen - 1;
         double norm = 1.0 / (A + B + C);
@@ -15,5 +17,8 @@ public class Echo extends Effect {
         return (norm * (A *	sig[i] +
                 B * sig[(i + bufLen - N) & mask] +
                 C  * sig[(i + bufLen - 2 * N) & mask]));
+    }
+    public String getName() {
+        return name;
     }
 }

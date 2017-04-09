@@ -1,11 +1,11 @@
 package effects.impl;
 
 import effects.Effect;
-import project_constants.ProjectConstants;
 
 public class Distortion extends Effect {
     private final double LIMIT = 0.01;
     private final double G = 3;
+    private String name = "Distortion";
 
     public Double effect(int i, Double[] sig, int bufLen) {
         int mask = bufLen - 1;
@@ -15,6 +15,10 @@ public class Distortion extends Effect {
         if(y < LIMIT){y = -LIMIT;}
 
         return G*y;
+    }
+
+    public String getName() {
+        return name;
     }
 
 

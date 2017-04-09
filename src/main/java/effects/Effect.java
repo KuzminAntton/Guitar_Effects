@@ -25,4 +25,6 @@ public abstract class Effect {
     public void setSampleFreq(long sampleFreq) {
         this.sampleFreq = sampleFreq;
     }
+
+    public abstract String getName();
 }
