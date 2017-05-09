@@ -15,6 +15,7 @@ public class EffectsFactory {
     private final Reverb reverb = new Reverb();
     private final Flanger flanger = new Flanger();
     private final Tremolo tremolo = new Tremolo();
+    private final DistortionAndEcho distortionAndEcho = new DistortionAndEcho();
 
     public static EffectsFactory getInstance() {
         if(instance == null) {
@@ -46,5 +47,9 @@ public class EffectsFactory {
 
     public Tremolo getTremolo() {
         return tremolo;
+    }
+
+    public DistortionAndEcho getDistortionAndEcho() {
+        return distortionAndEcho;
     }
 }

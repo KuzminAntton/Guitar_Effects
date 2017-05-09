@@ -3,9 +3,6 @@ package bsu.diplom.view;
 import bsu.diplom.effects.Effect;
 import bsu.diplom.effects.factory.EffectsFactory;
 import bsu.diplom.project_constants.ProjectConstants;
-import bsu.diplom.util.Complex;
-import bsu.diplom.util.FFT;
-import bsu.diplom.util.GraphsWorker;
 import bsu.diplom.wav_file.WavFile;
 
 import java.io.File;
@@ -43,6 +40,11 @@ public class Runner{
             //bsu.diplom.effects
             Effect effect = EffectsFactory.getInstance().getEcho();
             effect.setSampleFreq(sampleRate);
+
+            Effect effect2 = EffectsFactory.getInstance().getTremolo();
+            effect.setSampleFreq(sampleRate);
+
+
             do
             {
                 // Read frames into buffer
@@ -57,8 +59,8 @@ public class Runner{
                 Double[] newChanel1 = effect.transform(channel1);
                 Double[] newChanel2 = effect.transform(channel2);
 
-                buffChannel1 = newChanel1;
-                buffChannel2 = newChanel2;
+//                buffChannel1 = newChanel1;
+//                buffChannel2 = newChanel2;
                 double[][] transBuffer = new double[2][newChanel1.length];
 
                 for (int i=0 ; i < newChanel1.length ; i++)
@@ -67,47 +69,49 @@ public class Runner{
                     transBuffer[1][i] = newChanel2[i];
                 }
                 wavNewFile.writeFrames(transBuffer, toWrite);
+
+
             }
             while (framesRead != 0);
 
             wavFile.close();
             wavNewFile.close();
 
-            Complex[] complexes1 = new Complex[channel1.length];
-            Complex [] complexes2 = new Complex[buffChannel1.length];
-
-            Double [] buff1 = new Double[channel1.length];
-            Double [] buff2 = new Double[buffChannel1.length];
-
-            for(int i = 0; i < channel1.length; i++) {
-                complexes1[i] = new Complex(channel1[i],0);
-                buff1[i] = complexes1[i].re();
-            }
-
-
-            for(int i = 0; i < buffChannel1.length; i++) {
-                complexes2[i] = new Complex(buffChannel1[i],0);
-                buff2[i] = complexes2[i].re();
-            }
-
-            complexes1 =  FFT.fft(complexes1);
-            complexes2 =  FFT.fft(complexes2);
-
-            for(int i = 0; i < buffChannel1.length; i++) {
-                buff1[i] = complexes1[i].abs();
-            }
-
-            for(int i = 0; i < buffChannel1.length; i++) {
-                buff2[i] = complexes2[i].abs();
-            }
-
-
-            GraphsWorker graphsWorker = new GraphsWorker();
-
-            graphsWorker.addToDataset(buff1,buff2);
-
-            graphsWorker.plotSignal(effect.getName());
-
+//            Complex[] complexes1 = new Complex[channel1.length];
+//            Complex [] complexes2 = new Complex[buffChannel1.length];
+//
+//            Double [] buff1 = new Double[channel1.length];
+//            Double [] buff2 = new Double[buffChannel1.length];
+//
+//            for(int i = 0; i < channel1.length; i++) {
+//                complexes1[i] = new Complex(channel1[i],0);
+//                buff1[i] = complexes1[i].re();
+//            }
+//
+//
+//            for(int i = 0; i < buffChannel1.length; i++) {
+//                complexes2[i] = new Complex(buffChannel1[i],0);
+//                buff2[i] = complexes2[i].re();
+//            }
+//
+//            complexes1 =  FFT.fft(complexes1);
+//            complexes2 =  FFT.fft(complexes2);
+//
+//            for(int i = 0; i < buffChannel1.length; i++) {
+//                buff1[i] = complexes1[i].abs();
+//            }
+//
+//            for(int i = 0; i < buffChannel1.length; i++) {
+//                buff2[i] = complexes2[i].abs();
+//            }
+//
+//
+//            GraphsWorker graphsWorker = new GraphsWorker();
+//
+//            graphsWorker.addToDataset(buff1,buff2);
+//
+//            graphsWorker.plotSignal(effect.getName());
+//
         }
 
 
