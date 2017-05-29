@@ -38,10 +38,7 @@ public class Runner{
             //long framesCounter = 0;
             int framesRead;
             //bsu.diplom.effects
-            Effect effect = EffectsFactory.getInstance().getEcho();
-            effect.setSampleFreq(sampleRate);
-
-            Effect effect2 = EffectsFactory.getInstance().getTremolo();
+            Effect effect = EffectsFactory.getInstance().getChorus();
             effect.setSampleFreq(sampleRate);
 
 
@@ -59,8 +56,6 @@ public class Runner{
                 Double[] newChanel1 = effect.transform(channel1);
                 Double[] newChanel2 = effect.transform(channel2);
 
-//                buffChannel1 = newChanel1;
-//                buffChannel2 = newChanel2;
                 double[][] transBuffer = new double[2][newChanel1.length];
 
                 for (int i=0 ; i < newChanel1.length ; i++)
