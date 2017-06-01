@@ -5,7 +5,7 @@ import bsu.diplom.effects.Effect;
 
 public class NaturalEcho extends Effect {
     private final double A = 0.7;
-    private final double L = 0.6;
+    private final double L = 0.55;
 
     private String name = "NaturalEcho";
 

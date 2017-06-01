@@ -17,6 +17,7 @@ public class EffectsFactory {
     private final Tremolo tremolo = new Tremolo();
     private final DistortionAndEcho distortionAndEcho = new DistortionAndEcho();
     private final Chorus chorus = new Chorus();
+    private final DistortionAndFlanger distortionAndFlanger = new DistortionAndFlanger();
 
     public static EffectsFactory getInstance() {
         if(instance == null) {
@@ -56,5 +57,9 @@ public class EffectsFactory {
 
     public Chorus getChorus() {
         return chorus;
+    }
+
+    public DistortionAndFlanger getDistortionAndFlanger() {
+        return distortionAndFlanger;
     }
 }

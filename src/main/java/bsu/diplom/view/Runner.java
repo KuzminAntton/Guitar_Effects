@@ -25,7 +25,7 @@ public class Runner{
             long numFrames = wavFile.getFramesRemaining();
 
             WavFile wavNewFile = WavFile.newWavFile(new File(ProjectConstants.pathToWritingFile +
-                    ProjectConstants.outFileName)
+                    ProjectConstants.TREMOLO)
                     , numChannels, numFrames, validBytes, sampleRate);
 
             Double [] channel1 = new Double [buffLen];
@@ -38,7 +38,7 @@ public class Runner{
             //long framesCounter = 0;
             int framesRead;
             //bsu.diplom.effects
-            Effect effect = EffectsFactory.getInstance().getChorus();
+            Effect effect = EffectsFactory.getInstance().getTremolo();
             effect.setSampleFreq(sampleRate);
 
 

@@ -5,7 +5,7 @@ import bsu.diplom.effects.Effect;
 public class DistortionAndEcho extends Effect{
     private final double LIMIT = 0.01;
     private final double G = 4;
-    private String name = "DistortionAndEcho";
+    private String name = "Distortion And Echo";
 
     private final double A = 1.5;
     private final double B = 1.3;
